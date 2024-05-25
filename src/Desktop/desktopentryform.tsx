@@ -84,28 +84,34 @@ export default function DesktopEntryForm() {
     }
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleInputChange = (key: string) => (e: any) => {
-    let value = e.target.value;
+  // const handleInputChange = (key: string) => (e: any) => {
+  //   let value = e.target.value;
 
-    const numberKeys = [
-      "interest_rate",
-      "installments_owed",
-      "annual_income_log",
-      "debt_to_income_ratio",
-      "fico_score",
-      "cr_line",
-      "revolving_balance",
-      "number_of_inquiries",
-      "delinq_2_years",
-      "derogatory_records",
-    ];
+  //   const numberKeys = [
+  //     "interest_rate",
+  //     "installments_owed",
+  //     "annual_income_log",
+  //     "debt_to_income_ratio",
+  //     "fico_score",
+  //     "cr_line",
+  //     "revolving_balance",
+  //     "number_of_inquiries",
+  //     "delinq_2_years",
+  //     "derogatory_records",
+  //   ];
 
-    if (numberKeys.includes(key)) {
-      value = parseFloat(value);
-    }
+  //   if (numberKeys.includes(key)) {
+  //     value = parseFloat(value);
+  //   }
 
-    setInput((i) => ({ ...i, [key]: value }));
-  };
+  //   setInput((i) => ({ ...i, [key]: value }));
+  // };
+
+  const handleInputChange =
+    (key: keyof InputState) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value === "" ? null : parseFloat(e.target.value);
+      setInput((i) => ({ ...i, [key]: value }));
+    };
 
   useEffect(() => {
     setResponseData(resData);
@@ -214,7 +220,7 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">Interest Rate</div>
               <Input
-                value={input.interest_rate || ""}
+                value={input.interest_rate !== null ? input.interest_rate : ""}
                 type="number"
                 onChange={handleInputChange("interest_rate")}
               />
@@ -230,7 +236,11 @@ export default function DesktopEntryForm() {
               <div className="font-extrabold">Installments Owed</div>
 
               <Input
-                value={input.installments_owed || ""}
+                value={
+                  input.installments_owed !== null
+                    ? input.installments_owed
+                    : ""
+                }
                 type="number"
                 onChange={handleInputChange("installments_owed")}
               />
@@ -245,7 +255,11 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">Annual Income Log</div>
               <Input
-                value={input.annual_income_log || ""}
+                value={
+                  input.annual_income_log !== null
+                    ? input.annual_income_log
+                    : ""
+                }
                 type="number"
                 onChange={handleInputChange("annual_income_log")}
               />
@@ -260,7 +274,11 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">Debt to Income Ratio</div>
               <Input
-                value={input.debt_to_income_ratio || ""}
+                value={
+                  input.debt_to_income_ratio !== null
+                    ? input.debt_to_income_ratio
+                    : ""
+                }
                 type="number"
                 onChange={handleInputChange("debt_to_income_ratio")}
               />
@@ -275,7 +293,7 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">FICO Score</div>
               <Input
-                value={input.fico_score || ""}
+                value={input.fico_score !== null ? input.fico_score : ""}
                 type="number"
                 onChange={handleInputChange("fico_score")}
               />
@@ -290,7 +308,7 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">Days With CR Line</div>
               <Input
-                value={input.cr_line || ""}
+                value={input.cr_line !== null ? input.cr_line : ""}
                 type="number"
                 onChange={handleInputChange("cr_line")}
               />
@@ -305,7 +323,11 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold"> Revolving Balance</div>
               <Input
-                value={input.revolving_balance || ""}
+                value={
+                  input.revolving_balance !== null
+                    ? input.revolving_balance
+                    : ""
+                }
                 type="number"
                 onChange={handleInputChange("revolving_balance")}
               />
@@ -320,7 +342,7 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">Revolving Util Rate</div>
               <Input
-                value={input.rur || ""}
+                value={input.rur !== null ? input.rur : ""}
                 type="number"
                 onChange={handleInputChange("rur")}
               />
@@ -335,7 +357,11 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">Number of Inquiries</div>
               <Input
-                value={input.number_of_inquiries || ""}
+                value={
+                  input.number_of_inquiries !== null
+                    ? input.number_of_inquiries
+                    : ""
+                }
                 type="number"
                 onChange={handleInputChange("number_of_inquiries")}
               />
@@ -349,8 +375,15 @@ export default function DesktopEntryForm() {
             </div>
             <div>
               <div className="font-extrabold">Delinq 2 Years</div>
-              <Input
+              {/* <Input
                 value={input.delinq_2_years || ""}
+                type="number"
+                onChange={handleInputChange("delinq_2_years")}
+              /> */}
+              <Input
+                value={
+                  input.delinq_2_years !== null ? input.delinq_2_years : ""
+                }
                 type="number"
                 onChange={handleInputChange("delinq_2_years")}
               />
@@ -365,7 +398,11 @@ export default function DesktopEntryForm() {
             <div>
               <div className="font-extrabold">Derogatory Records</div>
               <Input
-                value={input.derogatory_records || ""}
+                value={
+                  input.derogatory_records !== null
+                    ? input.derogatory_records
+                    : ""
+                }
                 type="number"
                 onChange={handleInputChange("derogatory_records")}
               />
