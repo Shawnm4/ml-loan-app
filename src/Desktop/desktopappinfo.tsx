@@ -5,7 +5,7 @@ export default function DesktopAppInfo() {
         <div className="" style={{ fontFamily: "Inter" }}>
           <div className="text-xl mb-4">
             If you're not sure what kind of data to enter to demo the app, you
-            can use data similar to the below.
+            can use data similar to the data below.
           </div>
           <div className="mb-20">
             <img src="/datadata.png" />
