@@ -1,4 +1,4 @@
 export const EColors = {
-  primary: "#40c057",
+  primary: "#7048e8",
   primaryBg: "#dee2e6",
 };
